@@ -1,4 +1,6 @@
+'use client'
 import React from 'react'
+import { motion } from 'framer-motion'
 import { useTypewriter, Cursor } from 'react-simple-typewriter'
 import BackgroundCircle from './BackgroundCircle'
 import Image from 'next/image'
@@ -17,7 +19,12 @@ function Hero({}: Props) {
     })
 
     return (
-        <div className='h-screen flex flex-col items-center justify-center text-center overflow-hidden'>
+        <motion.div 
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            exit={{ opacity: 0 }}
+        className='h-screen flex flex-col items-center justify-center text-center overflow-hidden'>
             <BackgroundCircle />
 
             <div className='relative rounded-full h-32 w-32 mx-auto object-cover translate-y-[-10px]'>
@@ -33,7 +40,7 @@ function Hero({}: Props) {
             <div className='z-20'>
                 <h2 className='text-sm uppercase text-gray-500 pb-2 tracking-[5px] sm:tracking-[15px]'>Software Engineer</h2>
                 <h1 className='text-2xl lg:text-3xl font-semibold px-10'>
-                    <span className='mr-3'>{text}</span>
+                    <span className='mr-3 text-xs md:text-base'>{text}</span>
                     <Cursor cursorColor='#aeaeae' />
                 </h1>
 
@@ -44,20 +51,23 @@ function Hero({}: Props) {
                     <Link href="business">
                         <button className='heroButton'>Business</button>
                     </Link>
+                    <Link href="experience">
+                        <button className='heroButton'>Professional Experience</button>
+                    </Link>
                     <Link href="skills">
                         <button className='heroButton'>Skills</button>
                     </Link>
                     <Link href="showcase">
                         <button className='heroButton'>Showcase</button>
                     </Link>
-                    <Link href="getintouch">
+                    <Link href="contact">
                         <button className='heroButton'>Get in touch</button>
                     </Link>
                 </div>
             </div>
 
             
-        </div>
+        </motion.div>
     )
 }
 
